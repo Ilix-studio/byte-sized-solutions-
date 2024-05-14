@@ -18,7 +18,19 @@ const addEventOnElements = function (elements, eventType, callback) {
  * NAVBAR TOGGLE FOR MOBILE
  */
 
+// const navbar = document.querySelector("[data-navbar]");
+// const navTogglers = document.querySelectorAll("[data-nav-toggler]");
+// const overlay = document.querySelector("[data-overlay]");
+
+// const toggleNavbar = function () {
+//   navbar.classList.toggle("active");
+//   overlay.classList.toggle("active");
+//   document.body.classList.toggle("nav-active");
+// }
+
+// addEventOnElements(navTogglers, "click", toggleNavbar);
 const navbar = document.querySelector("[data-navbar]");
+const navTogglersContainer = document.querySelector("[data-nav-togglers-container]"); // Add this line to select the container
 const navTogglers = document.querySelectorAll("[data-nav-toggler]");
 const overlay = document.querySelector("[data-overlay]");
 
@@ -29,6 +41,12 @@ const toggleNavbar = function () {
 }
 
 addEventOnElements(navTogglers, "click", toggleNavbar);
+
+// Add event listener to the navTogglersContainer to prevent default scroll behavior
+navTogglersContainer.addEventListener("wheel", function (event) {
+  event.preventDefault();
+  this.scrollTop += event.deltaY;
+});
 
 
 
